@@ -1,1 +1,4 @@
-$(document).ready(console.log("ready"));
+$(document).ready(function () {
+
+
+});
