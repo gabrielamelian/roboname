@@ -1,10 +1,18 @@
 $(document).ready(function () {
-
+    //Initialize board object
     var board = {
         cells: []
     }
 
+    //Call to populate DOM
     startGame();
+
+    //Pre-load images
+    function preload(arrayOfImages) {
+        $(arrayOfImages).each(function(){
+            $('<img/>').attr('src',this.robotImage);
+        });
+    }
 
     function getRobot() {
         var randomHash = Math.random().toString(36).substring(7);
@@ -26,10 +34,12 @@ $(document).ready(function () {
         for (var i = 0; i < 20; i++) {
             $('#board').append('<img id="' + i + '" src="' + board.cells[i].hiddenImage + '">');
         }
-        $('#board').on('click', '*', showRobot(evt));
+        $('#board').on('click', 'img', showRobot);
     }
 
-    function showRobot(evt) {
-
+    function showRobot() {
+        var buttonId = $(this).attr('id');
+        var robot = board.cells.filter(function(element) { return buttonId == element.roboNumber });
+        $('#' + buttonId).attr('src',robot[0].robotImage);
     }
 });
