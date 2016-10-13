@@ -6,21 +6,18 @@ $(document).ready(function () {
 
     //Call to populate DOM
     startGame();
-
-    //Pre-load images
-    function preload(arrayOfImages) {
-        $(arrayOfImages).each(function(){
-            $('<img/>').attr('src',this.robotImage);
-        });
-    }
-
     preload(board.cells);
 
-    function getRobot() {
-        var randomHash = Math.random().toString(36).substring(7);
-        return "https://robohash.org/" + randomHash;
+    //Initializes the game
+    function startGame () {
+        generateBoard();
+        for (var i = 0; i < 20; i++) {
+            $('#board').append('<img id="' + i + '" src="' + board.cells[i].hiddenImage + '">');
+        }
+        $('#board').on('click', 'img', showRobot);
     }
 
+    //Populates the board object
     function generateBoard () {
         for (var i = 0; i < 20; i++) {
             board.cells.push({
@@ -31,14 +28,20 @@ $(document).ready(function () {
         }
     }
 
-    function startGame () {
-        generateBoard();
-        for (var i = 0; i < 20; i++) {
-            $('#board').append('<img id="' + i + '" src="' + board.cells[i].hiddenImage + '">');
-        }
-        $('#board').on('click', 'img', showRobot);
+    //Generates a random robot URL
+    function getRobot() {
+        var randomHash = Math.random().toString(36).substring(7);
+        return "https://robohash.org/" + randomHash;
     }
 
+    //Pre-load images
+    function preload(arrayOfImages) {
+        $(arrayOfImages).each(function(){
+            $('<img/>').attr('src',this.robotImage);
+        });
+    }
+
+    //Toggle image to show robot
     function showRobot() {
         var buttonId = $(this).attr('id');
         var robot = board.cells.filter(function(element) { return buttonId == element.roboNumber });
