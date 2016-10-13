@@ -12,14 +12,14 @@ body {
   flex-direction: column;
 }
 
-#board {
+#gameBoard {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   max-width: 900px;
 }
 
-#board img {
+#gameBoard img {
   width: 150px;
   height: 150px;
   border: 3px #ccc;
