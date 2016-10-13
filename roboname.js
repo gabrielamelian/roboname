@@ -14,6 +14,8 @@ $(document).ready(function () {
         });
     }
 
+    preload(board.cells);
+
     function getRobot() {
         var randomHash = Math.random().toString(36).substring(7);
         return "https://robohash.org/" + randomHash;
