@@ -5,6 +5,7 @@ var board = {
     cells: []
 }
 
+//Array that will contain two of each robot, it gets cleaned every time is used
 var roboLinks = [];
 
 //Initializes the game
@@ -22,7 +23,6 @@ function generateBoard () {
     for (var i = 0; i < 20; i++) {
         board.cells.push({
             roboNumber: i,
-            hiddenImage: "binary.jpg",
             robotImage: randomOtherRobot()
         })
     }
@@ -37,6 +37,7 @@ function createRoboLinks() {
     }
 }
 
+//Removes an item containing a link to a robot from the array
 function randomOtherRobot () {
     var randomIndex = Math.floor(Math.random() * roboLinks.length);
     return roboLinks.splice(randomIndex, 1);
@@ -46,7 +47,7 @@ function randomOtherRobot () {
 function populateDOM() {
     $('#gameBoard').empty();
     for (var i = 0; i < 20; i++) {
-        $('#gameBoard').append('<img id="' + i + '" src="binary.jpg">');
+        $('#gameBoard').append('<img id="' + i + '" class="hidden" src="binary.jpg">');
     }
 }
 
