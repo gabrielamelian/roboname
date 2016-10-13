@@ -24,7 +24,12 @@ $(document).ready(function () {
     function startGame () {
         generateBoard();
         for (var i = 0; i < 20; i++) {
-            $('#board').append('<img src="' + board.cells[i].hiddenImage + '">');
+            $('#board').append('<img id="' + i + '" src="' + board.cells[i].hiddenImage + '">');
         }
+        $('#board').on('click', '*', showRobot(evt));
+    }
+
+    function showRobot(evt) {
+
     }
 });
