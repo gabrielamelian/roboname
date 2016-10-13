@@ -5,24 +5,21 @@ $(document).ready(function () {
         return "https://robohash.org/" + randomHash;
     }
 
-    console.log(getRobot());
+    var board = {
+        cells: []
+    }
 
     function generateBoard () {
-        var boardSize = Number(document.userBoard.boardsize.value) || 4;
-        for (var a = 0; a < boardSize; a++) {
-            for (var b = 0; b < boardSize; b++) {
-                board.cells.push({
-                    col: a,
-                    row: b,
-                    isMine: Boolean(Math.floor(Math.random() * 1.2)),
-                    isMarked: false,
-                    hidden: true
-                })
-            }
+        for (var i = 0; i < 20; i++) {
+            board.cells.push({
+                roboNumber: i,
+                hiddenImage: '<img src="binary.jpg">',
+                robotImage: getRobot(),
+            })
         }
     }
 
-    for (var i = 0; i < 21; i++) {
+    for (var i = 0; i < 20; i++) {
         $('#board').append('<img src="' + getRobot() + '">');
     }
 
