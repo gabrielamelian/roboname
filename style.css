@@ -22,7 +22,7 @@ body {
 #board img {
   width: 150px;
   height: 150px;
-  border: 1px #ccc;
+  border: 3px #ccc;
   border-radius: 10%;
   background-color: #4d88ff;
   margin: 3px;
