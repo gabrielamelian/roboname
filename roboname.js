@@ -7,6 +7,7 @@ var board = {
 
 //Initializes the game
 function startGame () {
+    board.cells.length = 0;
     // console.log(board);
     generateBoard();
     // console.log(board);
@@ -30,7 +31,7 @@ function generateBoard () {
 function populateDOM() {
     $('#gameBoard').empty();
     for (var i = 0; i < 20; i++) {
-        $('#gameBoard').append('<img id="' + i + '" src="' + "binary.jpg" + '">');
+        $('#gameBoard').append('<img id="' + i + '" src="binary.jpg">');
     }
 }
 
