@@ -8,9 +8,7 @@ var board = {
 //Initializes the game
 function startGame () {
     board.cells.length = 0;
-    // console.log(board);
     generateBoard();
-    // console.log(board);
     preload(board.cells);
     populateDOM();
     $('#gameBoard').on('click', 'img', showRobot);
