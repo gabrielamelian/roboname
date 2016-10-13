@@ -5,6 +5,7 @@ var board = {
     cells: []
 }
 
+var roboLinks = [];
 
 //Initializes the game
 function startGame () {
@@ -13,29 +14,32 @@ function startGame () {
     preload(board.cells);
     populateDOM();
     $('#gameBoard').on('click', 'img', showRobot);
-    console.log(createRoboLinks());
 }
 
 //Populates the board object
 function generateBoard () {
+    createRoboLinks();
     for (var i = 0; i < 20; i++) {
         board.cells.push({
             roboNumber: i,
             hiddenImage: "binary.jpg",
-            robotImage: getRobot()
+            robotImage: randomOtherRobot()
         })
     }
 }
 
 //Creates an array with double images of each robot
 function createRoboLinks() {
-    var roboLinks = [];
     for (var i = 0; i < 10; i++) {
         var roboURL = getRobot();
         roboLinks.push(roboURL);
         roboLinks.push(roboURL);
     }
-    return roboLinks;
+}
+
+function randomOtherRobot () {
+    var randomIndex = Math.floor(Math.random() * roboLinks.length);
+    return roboLinks.splice(randomIndex, 1);
 }
 
 //Add board elements on DOM
