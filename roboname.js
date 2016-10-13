@@ -1,19 +1,18 @@
-$(document).ready(startGame());
+$(document).ready(startGame);
 
 //Initialize board object
 var board = {
     cells: []
 }
 
-//Call to populate DOM
-startGame();
-preload(board.cells);
-
 //Initializes the game
 function startGame () {
+    // console.log(board);
     generateBoard();
+    // console.log(board);
+    preload(board.cells);
     populateDOM();
-    $('#board').on('click', 'img', showRobot);
+    $('#gameBoard').on('click', 'img', showRobot);
 }
 
 //Populates the board object
@@ -29,9 +28,9 @@ function generateBoard () {
 
 //Add board elements on DOM
 function populateDOM() {
-    $('#board').empty();
+    $('#gameBoard').empty();
     for (var i = 0; i < 20; i++) {
-        $('#board').append('<img id="' + i + '" src="' + board.cells[i].hiddenImage + '">');
+        $('#gameBoard').append('<img id="' + i + '" src="' + "binary.jpg" + '">');
     }
 }
 
