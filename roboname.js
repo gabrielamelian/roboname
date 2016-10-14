@@ -68,5 +68,34 @@ function preload(arrayOfImages) {
 function showRobot() {
     var buttonId = $(this).attr('id');
     var robot = board.cells.filter(function(element) { return buttonId == element.roboNumber });
-    $('#' + buttonId).attr('src',robot[0].robotImage);
+    $('#' + buttonId).attr({
+        src: robot[0].robotImage,
+        class: "flipped"
+    });
+    playRobot();
+}
+
+//Show robot and check if partner already flipped
+function playRobot() {
+    var activeElement = document.getElementsByClassName("active");
+    var flippedElement = document.getElementsByClassName("flipped");
+    var hiddenElements = document.getElementsByClassName("hidden");
+
+    if (!activeElement.lenght > 0) {
+        $(".flipped").removeClass("flipped").addClass("active");
+    } else if (activeElement[0].src === flippedElement[0].src) {
+        $(".active").removeClass("active").addClass("discovered");
+        $(".flipped").removeClass("flipped").addClass("discovered");
+    } else if (activeElement[0].src !== flippedElement[0].src && hiddenElements.lenght % 2 !== 0) {
+        $(".flipped").removeClass("flipped").addClass("active");
+    } else {
+        $(".active").attr({
+            src: "binary.jpg",
+            class: "hidden"
+        })
+        $(".flipped").attr({
+            src: "binary.jpg",
+            class: "hidden"
+        })
+    }
 }
