@@ -7,16 +7,22 @@
   <link rel="stylesheet" type="text/css" href="styles/jquery-ui.theme.css">
 </head>
 <body>
-  <h1>Welcome to the robot uprising</h1>
+  <header>
+    <h1>Welcome to the robot uprising</h1>
+    <h4>Find all the robot pairs for the glory of the robot empire</h4>
+  </header>
   <div id="gameBoard"></div>
-  <div id="winDialog" class="ui-dialog" title="You win!" class="notShow">
+  <div id="winDialog" class="notShow ui-dialog" title="You win!">
     <img src="https://media.giphy.com/media/1Mng0gXC5Tpcs/giphy.gif" alt="You win">
     <h5 class="ui-dialog-content">You won!!!</h5>
   </div>
-  <button class="ui-button" onclick="startGame()">Restart Game</button>
+  <button id="startButton" class="ui-button" onclick="startGame()">Restart Game</button>
+  <footer>
+    <p>Robots lovingly delivered by <a href="Robohash.org" >Robohash.org</a></p>
+    <p>Background vector designed by <a href="http://www.freepik.com/free-photos-vectors/background">Kostolom3000 - Freepik.com</a></p>
+  </footer>
   <script language="JavaScript" src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
   <script src="http://code.jquery.com/ui/1.12.0/jquery-ui.js" integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk=" crossorigin="anonymous"></script>
   <script src="roboname.js"></script>
-  <footer><p>Robots lovingly delivered by <a href="Robohash.org" >Robohash.org</a></p></footer>
 </body>
 </html>
