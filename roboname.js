@@ -77,14 +77,9 @@ function showRobot() {
 
 //Show robot and check if partner already flipped
 function playRobot() {
-    // console.log($(".active"));
-    // console.log($(".flipped"));
     var activeSource = $(".active").attr('src');
     var flippedSource = $(".flipped").attr('src');
     var hiddenNumber = $(".hidden").length;
-    // console.log(activeSource);
-    // console.log(flippedSource);
-    // console.log(hiddenNumber);
     if ($(".active").length === 0) {
         $(".flipped").removeClass("flipped").addClass("active");
     } else {
@@ -94,14 +89,19 @@ function playRobot() {
         } else if (activeSource !== flippedSource && hiddenNumber % 2 !== 0) {
             $(".flipped").removeClass("flipped").addClass("active");
         } else {
-            $(".active").delay(1000).attr({
-                src: "binary.jpg",
-                class: "hidden"
-            })
-            $(".flipped").delay(1000).attr({
-                src: "binary.jpg",
-                class: "hidden"
-            })
+            setTimeout(turnBackCard, 1000);
         }
     }
+}
+
+//Card goes back to binary if pair is not found
+function turnBackCard() {
+    $(".active").attr({
+        src: "binary.jpg",
+        class: "hidden"
+    })
+    $(".flipped").attr({
+        src: "binary.jpg",
+        class: "hidden"
+    })
 }
