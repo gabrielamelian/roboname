@@ -89,6 +89,7 @@ function playRobot() {
         } else if (activeSource !== flippedSource && hiddenNumber % 2 !== 0) {
             $(".flipped").removeClass("flipped").addClass("active");
         } else {
+            $('#gameBoard').off('click', '**');
             setTimeout(turnBackCard, 1000);
         }
     }
@@ -105,12 +106,12 @@ function turnBackCard() {
         src: "styles/images/binary.jpg",
         class: "hidden"
     })
+    $('#gameBoard').on('click', 'img', showRobot);
 }
 
 //Function to determine if game is won
 function checkForWin() {
     if ($(".hidden").length === 0) {
-        console.log("you win");
         animatedWin();
     }
 }
