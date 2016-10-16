@@ -84,7 +84,6 @@ function showRobot() {
 function playRobot() {
     var activeSource = $(".active").attr('src');
     var flippedSource = $(".flipped").attr('src');
-    var hiddenNumber = $(".hidden").length;
     if ($(".active").length === 0) {
         $(".flipped").removeClass("flipped").addClass("active");
     } else {
