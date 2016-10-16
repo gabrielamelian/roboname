@@ -15,7 +15,6 @@ function startGame () {
     preload(board.cells);
     populateDOM();
     $('#gameBoard').on('click', 'img', showRobot);
-    animatedWin();
 }
 
 //Populates the board object
@@ -119,12 +118,13 @@ function checkForWin() {
 //Dialog box to restart game
 function animatedWin() {
     $( "#winDialog" ).dialog({
-      modal: true,
-      buttons: {
-        "Restart Game": function() {
-            startGame();
-            $( this ).dialog( "close" );
+        modal: true,
+        width: 355,
+        buttons: {
+            "Restart Game": function() {
+                startGame();
+                $( this ).dialog( "close" );
+            }
         }
-      }
     })
 }
