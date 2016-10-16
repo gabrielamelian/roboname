@@ -15,6 +15,7 @@ function startGame () {
     preload(board.cells);
     populateDOM();
     $('#gameBoard').on('click', 'img', showRobot);
+    animatedWin();
 }
 
 //Populates the board object
@@ -47,7 +48,7 @@ function randomOtherRobot () {
 function populateDOM() {
     $('#gameBoard').empty();
     for (var i = 0; i < 20; i++) {
-        $('#gameBoard').append('<img id="' + i + '" class="hidden" src="images/binary.jpg">');
+        $('#gameBoard').append('<img id="' + i + '" class="hidden" src="styles/images/binary.jpg">');
     }
 }
 
@@ -98,11 +99,11 @@ function playRobot() {
 //Card goes back to binary if pair is not found
 function turnBackCard() {
     $(".active").attr({
-        src: "images/binary.jpg",
+        src: "styles/images/binary.jpg",
         class: "hidden"
     })
     $(".flipped").attr({
-        src: "images/binary.jpg",
+        src: "styles/images/binary.jpg",
         class: "hidden"
     })
 }
@@ -120,7 +121,7 @@ function animatedWin() {
     $( "#winDialog" ).dialog({
       modal: true,
       buttons: {
-        restartGame: function() {
+        "Restart Game": function() {
             startGame();
             $( this ).dialog( "close" );
         }
