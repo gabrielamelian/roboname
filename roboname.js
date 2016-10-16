@@ -111,5 +111,19 @@ function turnBackCard() {
 function checkForWin() {
     if ($(".hidden").length === 0) {
         console.log("you win");
+        animatedWin();
     }
+}
+
+//Dialog box to restart game
+function animatedWin() {
+    $( "#winDialog" ).dialog({
+      modal: true,
+      buttons: {
+        restartGame: function() {
+            startGame();
+            $( this ).dialog( "close" );
+        }
+      }
+    })
 }
