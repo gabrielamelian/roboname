@@ -47,7 +47,7 @@ function randomOtherRobot () {
 function populateDOM() {
     $('#gameBoard').empty();
     for (var i = 0; i < 20; i++) {
-        $('#gameBoard').append('<img id="' + i + '" class="hidden" src="binary.jpg">');
+        $('#gameBoard').append('<img id="' + i + '" class="hidden" src="images/binary.jpg">');
     }
 }
 
@@ -92,16 +92,24 @@ function playRobot() {
             setTimeout(turnBackCard, 1000);
         }
     }
+    checkForWin();
 }
 
 //Card goes back to binary if pair is not found
 function turnBackCard() {
     $(".active").attr({
-        src: "binary.jpg",
+        src: "images/binary.jpg",
         class: "hidden"
     })
     $(".flipped").attr({
-        src: "binary.jpg",
+        src: "images/binary.jpg",
         class: "hidden"
     })
+}
+
+//Function to determine if game is won
+function checkForWin() {
+    if ($(".hidden").length === 0) {
+        console.log("you win");
+    }
 }
