@@ -1,4 +1,4 @@
-$(document).ready(startGame);
+$(document).ready(firstGame);
 
 //Initialize board object
 var board = {
@@ -8,13 +8,18 @@ var board = {
 //Array that will contain two of each robot, it gets cleaned every time is used
 var roboLinks = [];
 
+//Loads first game when first opened, adds events listeners
+function firstGame() {
+    startGame();
+    $('#gameBoard').on('click', 'img', showRobot);
+}
+
 //Initializes the game
 function startGame () {
-    board.cells.length = 0;
+    board.cells = [];
     generateBoard();
     preload(board.cells);
     populateDOM();
-    $('#gameBoard').on('click', 'img', showRobot);
 }
 
 //Populates the board object
@@ -86,8 +91,6 @@ function playRobot() {
         if (activeSource === flippedSource) {
             $(".active").removeClass("active").addClass("discovered");
             $(".flipped").removeClass("flipped").addClass("discovered");
-        } else if (activeSource !== flippedSource && hiddenNumber % 2 !== 0) {
-            $(".flipped").removeClass("flipped").addClass("active");
         } else {
             $('#gameBoard').off('click', '**');
             setTimeout(turnBackCard, 1000);
